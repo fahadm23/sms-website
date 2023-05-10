@@ -35,7 +35,7 @@ export const Hero = () => {
      <Box maxW={{ lg: "md", xl: "xl" }} pt={{ base: "20", lg: "20" }} pb={{ base: "16", lg: "16" }}>
       <Heading
        as='h1'
-       color={mode("#ef233c", "red.300")}
+       color={mode("red.500", "red.300")}
        size='2xl'
        lineHeight='1'
        fontWeight='extrabold'
@@ -44,7 +44,7 @@ export const Hero = () => {
        SMS Laser & Fabrication.{" "}
        <Box as='mark' color={mode("gray.700", "red.300")} bg='transparent'>
         customized metalwork solutions.
-        <Text as='span' color={mode("#ef233c", "red.300")}>
+        <Text as='span' color={mode("red.500", "red.300")}>
          &nbsp;for you.
         </Text>
        </Box>
@@ -59,7 +59,7 @@ export const Hero = () => {
        <Button
         size='lg'
         colorScheme='red'
-        bg={mode("#ef233c", "red.300")}
+        bg={mode("red.500", "red.300")}
         height='14'
         px='8'
         shadow='base'
@@ -96,10 +96,9 @@ export const Hero = () => {
       as='video'
       muted
       autoPlay
-      height='84%'
+      height='100%'
       width='100%'
-      objectFit='contain'
-      objectPosition='top bottom'
+      objectFit='cover'
       src='https://v.ftcdn.net/05/87/81/94/700_F_587819447_OtU1Wk7qIoeWAILaNpKYkk9cO9OlxAag_ST.mp4'
      />
     </Box>

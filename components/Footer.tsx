@@ -14,7 +14,7 @@ import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
 
 export const Footer = () => (
  <Box bg='blackAlpha.800' color='white'>
-  <Container as='footer' role='contentinfo'>
+  <Container as='footer' role='contentinfo' maxW={"3xl"}>
    <Stack
     spacing='8'
     direction={{ base: "column", md: "row" }}

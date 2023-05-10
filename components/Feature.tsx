@@ -1,68 +1,76 @@
 import {
+ Avatar,
  Box,
+ Button,
  Container,
  Heading,
- Icon,
+ HStack,
  Image,
- Square,
+ Input,
+ Link,
+ SimpleGrid,
  Stack,
  Text,
  useBreakpointValue,
+ useColorModeValue as mode,
 } from "@chakra-ui/react";
 import * as React from "react";
-import { features } from "./FeatureData";
+import { posts } from "./data";
 
 export const Feature = () => (
- <Box as='section' bg='bg-surface'>
-  <Container py={{ base: "12", md: "16" }} maxW={{ base: "100%", md: "90%" }}>
-   <Stack spacing={{ base: "12", md: "16" }} maxW='full' mx='auto'>
-    <Stack spacing={{ base: "4", md: "5" }} maxW={{ base: "xl", md: "3xl" }} mx='auto'>
-     <Stack spacing='3'>
-      <Heading size={useBreakpointValue({ base: "3xl", md: "2xl" })} textAlign='center'>
+ <Container py={{ base: "16", md: "16" }} maxW='container.xl'>
+  <Stack spacing={{ base: "16", md: "24" }}>
+   <Stack spacing={{ base: "8", md: "10" }} align='center'>
+    <Stack spacing={{ base: "4", md: "6" }} textAlign='center'>
+     <Stack spacing='4'>
+      <Heading as={"h1"} size={"3xl"} fontWeight={"extrabold"} letterSpacing={"tight"}>
        Who We Are
       </Heading>
      </Stack>
-     <Text color='muted' fontSize={{ base: "lg", md: "xl" }} textAlign='center'>
+     <Text fontSize={{ base: "lg", md: "xl" }} maxW='2xl' color='muted'>
       Experience the unique approach of SMS Laser & Fabrication, where cutting-edge solutions and
       unmatched customer service set us apart.
      </Text>
     </Stack>
-    <Stack
-     direction={{ base: "column", md: "row" }}
-     spacing={{ base: "12", lg: "16" }}
-     maxW={{ base: "xl", md: "3xl" }}
-     mx={{ base: "auto", md: "0" }}
-     justifyContent='center'
-    >
-     <Stack spacing={{ base: "10", md: "12" }} maxW='xl' justify='center' width='full'>
-      {features.map((feature) => (
-       <Stack key={feature.name} spacing='4' direction='row'>
-        <Square size={{ base: "10", md: "12" }} bg='red.400' color='grey.400' borderRadius='lg'>
-         <Icon as={feature.icon} boxSize={{ base: "5", md: "5" }} />
-        </Square>
-        <Stack spacing={{ base: "4", md: "5" }} pt={{ base: "1.5", md: "2.5" }}>
-         <Stack spacing={{ base: "1", md: "2" }}>
-          <Text fontSize={{ base: "lg", md: "xl" }} fontWeight='medium'>
-           {feature.name}
-          </Text>
-          <Text color='muted'>{feature.description}</Text>
+   </Stack>
+   <SimpleGrid
+    columns={{ base: 1, md: 3, lg: 3 }}
+    rowGap={{ base: "8", md: "12" }}
+    columnGap={{ base: "8", lg: "16" }}
+   >
+    {posts.map((post) => (
+     <Link key={post.id} _hover={{ textDecor: "none" }} role='group'>
+      <Box
+       p='6'
+       bg='bg-surface'
+       boxShadow={mode("lg", "lg-dark")}
+       _groupHover={{ boxShadow: mode("xl", "xl-dark") }}
+       transition='all 0.2s'
+       height='full'
+       borderRadius={"10px"}
+      >
+       <Stack spacing={{ base: "8", lg: "16" }} justify='space-between' height='full'>
+        <Stack spacing='8'>
+         <Box overflow='hidden'>
+          <Image src={post.image} alt={post.title} width='full' height='15rem' objectFit='cover' />
+         </Box>
+         <Stack spacing='3'>
+          <Heading size='md'>{post.title}</Heading>
+          <Text color='muted'>{post.excerpt}</Text>
          </Stack>
         </Stack>
+        {/* <HStack>
+         <Avatar src={post.author.avatarUrl} boxSize='10' />
+         <Box fontSize='sm'>
+          <Text fontWeight='medium'>{post.author.name}</Text>
+          <Text color='muted'>{post.publishedAt}</Text>
+         </Box>
+        </HStack> */}
        </Stack>
-      ))}
-     </Stack>
-     <Box width='full' overflow='hidden'>
-      <Image
-       maxW='100%'
-       borderRadius={"md"}
-       minH={{ base: "100%", lg: "560px" }}
-       objectFit='cover'
-       src='https://images.unsplash.com/photo-1596552571892-2dda2c594670?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80'
-       alt='Laser metal engraving machine'
-      />
-     </Box>
-    </Stack>
-   </Stack>
-  </Container>
- </Box>
+      </Box>
+     </Link>
+    ))}
+   </SimpleGrid>
+  </Stack>
+ </Container>
 );
